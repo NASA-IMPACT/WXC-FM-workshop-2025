@@ -1,1 +1,11 @@
 matplotlib
+h5netcdf
+matplotlib
+wget
+pyyaml
+xarray
+scipy
+torch
+tqdm
+pysteps
+cartopy
