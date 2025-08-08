@@ -26,7 +26,6 @@ This repository includes contents for the Workshop on Weather Foundation Model: 
 8. Click on `Run Space`. If it throws an error, you might have to pick an Image. The top setting called `Latest` works.
 9. If a space is already running, click on "open". This should open a new tab with the jupyterlab environment.
 ![Open](/images/workshop-jypyterlab-app-list.png)
-![Jupyterlab Environment](/images/jupyter-lab-home-page.png)
 
 # Environment setup
 
