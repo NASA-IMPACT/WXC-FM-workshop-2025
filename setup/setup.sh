@@ -60,30 +60,13 @@ download_weather_model() {
 
 # Setup for Prithvi-WX environment
 setup_weather_environment() {
+    uv pip install -q git+https://github.com/NASA-IMPACT/Prithvi-WxC.git
+    uv pip install -q git+https://github.com/IBM/granite-wxc.git
+
     log "Setting up Prithvi-WxC"
-
-    # Check if Prithvi-WxC is already cloned
-    if [[ ! -d "Prithvi-WxC" ]]; then
-        git clone https://github.com/NASA-IMPACT/Prithvi-WxC.git
-        if [[ $? -ne 0 ]]; then
-            log "ERROR: Failed to clone Prithvi-WxC repository"
-            return 1
-        fi
-    fi
-
-    # Install Prithvi-WxC
-    cd Prithvi-WxC
-    pip install ".[example]"
-    if [[ $? -ne 0 ]]; then
-        log "ERROR: Failed to install Prithvi-WxC"
-        cd ..
-        return 1
-    fi
-    cd ..
 
     # Download model weights
     download_weather_model
-
     return 0
 }
 
@@ -110,12 +93,12 @@ create_conda_env() {
         conda activate "$env_name"
 
         # Install ipykernel in all environments
-        pip install ipykernel
+        pip install ipykernel uv
 
         # Install requirements from the appropriate file
         local requirements_file="${REPOSITORY_PATH}/environments/${env_name}/requirements.txt"
         if [[ -f "$requirements_file" ]]; then
-            pip install -r "$requirements_file"
+            uv pip install -r "$requirements_file"
             if [[ $? -ne 0 ]]; then
                 log "WARNING: Some packages in requirements.txt may have failed to install"
             fi
@@ -124,9 +107,7 @@ create_conda_env() {
         fi
 
         # Special setup for weather environment
-        if [[ "$env_name" == "prithvi_wx" ]]; then
-            setup_weather_environment
-        fi
+        setup_weather_environment
 
         # Register the kernel
         python -m ipykernel install --user --name "$env_name" --display-name "$env_name"
