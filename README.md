@@ -12,7 +12,7 @@ This repository includes contents for the Workshop on Weather Foundation Model: 
 
 # Getting started
 
-1. Navigate to [Login URL](https://workshop-domain-4nkryygi.auth.us-west-2.amazoncognito.com/login?client_id=44jal9umgf2h0h7bp6s81notlc&response_type=code&scope=aws.cognito.signin.user.admin+openid+profile&redirect_uri=https://bsusccy257.execute-api.us-west-2.amazonaws.com/invoke)
+1. Navigate to <a href="https://workshop-domain-4nkryygi.auth.us-west-2.amazoncognito.com/login?client_id=44jal9umgf2h0h7bp6s81notlc&response_type=code&scope=aws.cognito.signin.user.admin+openid+profile&redirect_uri=https://bsusccy257.execute-api.us-west-2.amazonaws.com/invoke" target="_blank">Login URL</a>
 2. Log in using the credential provided
 ![Login with username and password](images/login-1.png)
 3. Once the Studio starts, Click on JupyterLab
